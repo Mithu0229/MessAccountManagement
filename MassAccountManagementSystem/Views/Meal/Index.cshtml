@@ -1,0 +1,133 @@
+﻿@using MassAccountManagementSystem.Models
+@model IEnumerable<MassAccountManagementSystem.Models.Meal>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutForAll.cshtml";
+}
+
+
+
+
+  @{
+      var u1 = @Model.Where(a => a.UserId == 1).ToList();
+      var u2 = @Model.Where(a => a.UserId == 2).ToList();
+      var u3 = @Model.Where(a => a.UserId == 3).ToList();
+      var u4 = @Model.Where(a => a.UserId == 4).ToList();
+  }
+<div class="container" style="background-image: url('/Images/5519107155_c29cb3604f_b.jpg');border-radius: 7px ">
+    <h2 style="color: white">All meal and amount.</h2>
+    <div class="row" style="margin-left: 100px">
+        <div class="col-md-1">
+            <h3 style="margin-bottom: 0px;">SL No:</h3><br/>
+
+            @{
+                var counts = 1;
+                for (int i = 1; i < 32; i++)
+                {
+                    <b>@i</b><br/><br/>
+                }
+
+            }
+
+
+        </div>
+        <div class="col-md-2">
+            @{
+                var sumMeal = 0;
+                var sumAmount = 0;
+            }
+            <h2>Mito</h2>
+            <div class="col-md-1" style="margin-right: 15px">
+                <b>Meal</b>
+                @foreach (var i in u1)
+                {
+                    <span style="border-bottom: 1px solid black"><b>@i.Meal1</b><br /><br /></span>
+                    sumMeal += (int) @i.Meal1;
+                }
+                <b>T:@sumMeal&nbsp;</b> <br/>
+            </div>
+            <div class="col-md-1">
+                <b>Amount</b>
+                @foreach (var i in u1)
+                {
+                    <span style="border-bottom: 1px solid black"><b>@i.Amount</b><br /><br /></span>
+                    sumAmount += (int) @i.Amount;
+                }
+                <b>T:@sumAmount</b>
+            </div>
+
+
+        </div>
+
+
+        <div class="col-md-2">
+            @{
+                var usermeal2 = 0;
+                var useramount2 = 0;
+            }
+            <h2>Shaoun</h2>
+            <div class="col-md-1" style="margin-right: 15px">
+                <b>Meal</b>
+                @foreach (var i in u2)
+                {
+                    <span style="border-bottom: 1px solid black"><b>@i.Meal1</b><br /><br /></span>
+                    usermeal2 += (int) @i.Meal1;
+                }
+                <b>T:&nbsp;@usermeal2</b>
+            </div>
+            <div class="col-md-1">
+                <b>Amount</b>
+                @foreach (var i in u2)
+                {
+                    <span style="border-bottom: 1px solid black"><b>@i.Amount</b><br /><br /></span>
+                    useramount2 += (int) @i.Amount;
+                }
+                <b>T:&nbsp;@useramount2</b>
+            </div>
+        </div>
+        <div class="col-md-2">
+            @{
+                var usermeal3 = 0;
+            }
+            <h2>Nazrul</h2>
+            <div class="col-md-1">
+                <b>Meal</b>
+                @foreach (var i in u3)
+                {
+                    <span style="border-bottom: 1px solid black"><b>@i.Meal1</b><br /><br /></span>
+                    usermeal3 += (int) @i.Meal1;
+                }
+                <b>T:&nbsp;@usermeal3</b>
+            </div>
+
+        </div>
+        <div class="col-md-2">
+            @{
+                var usermeal4 = 0;
+                var useramount4 = 0;
+
+            }
+            <h2>Jaber</h2>
+            <div class="col-md-1" style="margin-right: 15px">
+                <b>Meal </b>
+                @foreach (var i in u4)
+                {
+                    <span style="border-bottom: 1px solid black"><b>@i.Meal1</b><br /><br /></span>
+                    usermeal4 += (int) @i.Meal1;
+                }
+                <b>T:&nbsp;@usermeal4</b>
+            </div>
+            <div class="col-md-1">
+                <b>Amount</b>
+                @foreach (var i in u4)
+                {
+                    <span style="border-bottom: 1px solid black"><b>@i.Amount</b><br /><br /></span>
+                    useramount4 += (int) @i.Amount;
+                }
+                <b>T:&nbsp;@useramount4</b>
+            </div>
+        </div>
+
+    </div>
+</div>

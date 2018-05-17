@@ -1,0 +1,58 @@
+﻿@model MassAccountManagementSystem.Models.MealAdd
+
+@{
+    ViewBag.Title = "AddMeal";
+    Layout = "~/Views/Shared/_LayoutForAll.cshtml";
+}
+
+
+
+<div class="container" style="margin: 20px 20px; background-image: url('/Images/5519107155_c29cb3604f_b.jpg'); border-radius: 7px;">
+    <div>
+        <h3 style="color: white">Save your meal and amount.</h3>
+        @using (Html.BeginForm("AddMeal", "Meal", FormMethod.Post))
+        {
+            <table align="center">
+                <tr>
+                    <td></td>
+                    <td>@Html.TextBoxFor(a => a.Meal1, new {placeholder = "Enter your meal today", @class = "form-control"})<br/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@Html.TextBoxFor(a => a.Amount, new {placeholder = "Enter your amount today", @class = "form-control"})<br/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" class="btn btn-block btn-success" value="Add"/><br/></td>
+                </tr>
+            </table>
+        }
+
+    </div>
+</div>
+
+@*<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.myclass').validate({
+            rules: {
+                Meal1: {
+                    number: true
+                },
+                Amount: {
+                    number: true
+    }
+           },
+            messages: {
+                Meal1: {
+                    number:"Only number is valid"
+                },
+                Amount: {
+                    number: "Only number is valid"
+                }
+            }
+        });
+    });
+</script>*@
+

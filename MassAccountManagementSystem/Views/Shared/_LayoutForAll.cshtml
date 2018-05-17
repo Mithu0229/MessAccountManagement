@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+</head>
+<body style="background-color: gray">
+    <div class="container">
+        <div class="panel">
+            <div class="panel panel-heading">
+
+                <span class="btn btn-success">@Html.ActionLink("Profile", "Index", "Profile", new { @id = (int)Session["id"] }, new{@style="color: white; text-decoration: none"})</span>
+                <span class="btn btn-success">@Html.ActionLink("Add meal", "AddMeal", "Meal",null,new{@style="color:white;text-decoration: none;"})</span>
+                <span class="btn btn-success">@Html.ActionLink("View meal", "OwnMeal", "Meal", new { @id = (int)Session["id"] }, new { @style = "color:white;text-decoration: none;" })</span>
+                <span class="btn btn-success">@Html.ActionLink("View all meal", "Index", "Meal", null, new { @style = "color:white;text-decoration: none;" })</span>
+                <span class="btn btn-success">@Html.ActionLink("Calculate", "CalculateMealAndAmount", "Meal", null, new { @style = "color:white;text-decoration: none;" })</span>
+
+                <span class="btn btn-success pull-right">@Html.ActionLink("Logout", "logout", "Account", null, new { @style = "color:white;text-decoration: none;" })</span>
+            </div>
+            <div class="panel-body">
+                @RenderBody()
+            </div>
+            <div class="panel-footer">
+                <span style="text-align: center">Contact :
+                    <a href="https://showkat131080@gmail.com">showkat131080@gmail.com</a>
+</span>
+            </div>
+        </div>
+    </div>
+    <div>
+
+    </div>
+</body>
+</html>

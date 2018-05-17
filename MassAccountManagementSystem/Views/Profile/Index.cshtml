@@ -1,0 +1,141 @@
+﻿@using MassAccountManagementSystem.Models
+@model MassAccountManagementSystem.Models.User
+@{
+    ViewBag.Title = "Index";
+   
+    Layout = "~/Views/Shared/_LayoutForAll.cshtml";
+}
+<div class="container" style="padding: 50px; color: green; background-image: url('/Images/5519107155_c29cb3604f_b.jpg'); border-radius: 7px;">
+    <div class="pull-left" style="margin-right: 50px">
+        <input type="button" class="btn btn-success" data-toggle="collapse" data-target="#meal" value="See your data"/>
+        <br/>
+        <br/>
+         @{
+             var meal = 0;
+             var amount = 0;
+         }
+        @{
+            var parmeal = Session["parmeal1"];
+        }
+        <div class="collapse" id="meal" style="color: white; font-weight: bold; padding: 10px; width: 280px; height: 300px; border: 1px solid rosybrown; border-radius: 5px; background-color: gray">
+            <table align="center" style="margin-top: 20px">
+                <tr>
+                    <td>My meal : </td>
+                    <td>
+                        @foreach (var a in (List<Meal>) Session["userdata"])
+                        {
+                            meal += (int)a.Meal1;
+                        }
+                        @meal
+                    </td>
+                </tr>
+                <tr>
+                    <td>My Amount : </td>
+                    <td>
+                        @foreach (var a in (List<Meal>)Session["userdata"])
+                        {
+                            amount += (int)a.Amount;
+                        }
+                        @amount
+                    </td>
+                </tr>
+                <tr>
+                    <td>Par meal : </td>
+                    <td>
+                     @parmeal
+                       
+                    </td>
+                </tr>
+                <tr>
+                    <td>Eat Amount: </td>
+                    <td>
+                        
+                        @{
+                            var eat =(int)meal*(int)parmeal+275;
+                        }
+                        @eat
+                    </td>
+                </tr>
+                <tr>
+                    <td>Get Amount: </td>
+                    <td>
+                        @{
+                            if (amount > eat)
+                            {
+                                var get = amount - eat;
+                                Session["getu"] = get;
+                            }
+                        }
+                        @Session["getu"]
+                    </td>
+                </tr>
+                <tr>
+                    <td>Give Amount : </td>
+                    <td>
+                        @{
+                            if (amount < eat)
+                            {
+                                var give = eat - amount;
+                                Session["giveu"] = give;
+                            }
+                        }
+                        @Session["giveu"]
+                    </td>
+
+                </tr>
+            </table>
+
+        </div>
+    </div>
+    <div class="pull-right" style="margin-right: 200px">
+        <table align="center">
+
+            <tr>
+                <td></td>
+                <td>
+                    <img src="@Url.Content(Model.ImagePath)" alt="Some problem" width="250px" height="250px" style="float: left; border-radius: 50%" />
+
+                </td>
+            </tr>
+            <tr>
+                <td>Name :<br /></td>
+                <td class="form-control" style="margin-top: 5px;">@Model.Name<br /></td>
+
+            <tr>
+                <td>UserName :<br /></td>
+                <td class="form-control" style="margin-top: 5px;">@Model.UserName</td>
+            </tr>
+            <tr>
+                <td>Address :<br /></td>
+                <td class="form-control" style="margin-top: 5px;">@Model.Address<br /></td>
+            </tr>
+            <tr>
+                <td>Phone :</td>
+                <td class="form-control" style="margin-top: 5px;">@Model.Phone<br /></td>
+            </tr>
+            <tr>
+                <td>Email :</td>
+                <td class="form-control" style="margin-top: 5px;">@Model.Email<br /></td>
+            </tr>
+
+            <tr>
+                <td>Question :</td>
+                <td class="form-control" style="margin-top: 5px;">@Model.Question</td>
+
+            </tr>
+
+            <tr>
+                <td> </td>
+                <td class="pull-right"><span class="btn btn-success btn-block" style="margin-top: 5px;padding: 5px">@Html.ActionLink("Change your profile", "Edit", new { id = @Model.UserId }, new { @style = "color:white; text-decoration: none" })</span>
+</td>
+            </tr>
+        </table>
+    </div>
+   
+    <br/>
+    <br/>
+    <div class="pull-right">
+        
+    </div>
+</div>
+

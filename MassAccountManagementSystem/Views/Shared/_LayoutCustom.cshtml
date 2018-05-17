@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</head>
+<body style="background-image: url('/Images/5519107155_c29cb3604f_b.jpg')">
+<div>
+    <span class="btn btn-success pull-right">Register</span>
+</div>
+<div align="center" style="width: 300px; background-image: url('/Images/1388458PIC.jpg')">
+    <div style="padding: 10px;" align="center">
+        <input type="text" class="form-control" placeholder="Enter your UserName" />
+        <br />
+        <input type="text" class="form-control" placeholder="Enter your Password" />
+        <br />
+        @*<input type="checkbox" id="checkRemember" /> Remember me*@
+        <br />
+        <input type="button" class="btn btn-success btn-block" value="Login" />
+        <br />
+        <a href="" style="color: white">Forget password</a>
+    </div>
+</div>
+<div>
+    @RenderBody()
+</div>
+</body>
+</html>

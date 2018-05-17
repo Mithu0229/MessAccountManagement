@@ -1,0 +1,68 @@
+﻿@using MassAccountManagementSystem.Models
+
+@{
+    ViewBag.Title = "OwnMeal";
+    Layout = "~/Views/Shared/_LayoutForAll.cshtml";
+}
+
+
+<div class="container" align="center" style="background-image: url('/Images/5519107155_c29cb3604f_b.jpg'); color: black; font-weight: bold;border-radius: 7px">
+    <h2 style="color: white">Your meal and amount</h2>
+    <div class="row" style="margin-top: 15px;">
+        <div class="col-md-2">
+            <b style="margin-bottom: 10px;">SL No:</b><br/>
+            @{
+                var counts = 1;
+                foreach (var a in (List<Meal>) Session["meal"])
+                {
+                    if (a.Meal1.HasValue)
+                    {
+                        <b>@counts</b><br/><br/>
+                        counts++;
+                    }
+                }
+            }
+        </div>
+        <div class="col-md-3">
+            <b style="margin-bottom: 10px;">Meal</b><br/>
+            @{
+                var sum = 0;
+                var sum1 = 0;
+            }
+            @foreach (var a in (List<Meal>) Session["meal"])
+            {
+                <span style="border-bottom: 2px solid gray"><b>@a.Meal1</b><br/><br/></span>
+                sum += (int) @a.Meal1;
+            }
+            <b>Total Meal :@sum</b>
+
+        </div>
+        <div class="col-md-3">
+            <b style="margin-bottom: 10px;">Amount</b><br/>
+            @foreach (var a in (List<Meal>) Session["meal"])
+            {
+                <span style="border-bottom: 2px solid gray"><b>@a.Amount</b><br /><br /></span>
+                sum1 += (int) @a.Amount;
+            }
+            <b>Total Amount : @sum1</b>
+
+        </div>
+
+        <div class="col-md-2">
+            <b style="margin-bottom: 10px;">Date</b><br />
+            @{
+                
+                foreach (var a in (List<Meal>)Session["meal"])
+                {
+                    if (a.Meal1.HasValue)
+                    {
+                        <b>@DateTime.Now.ToString("d")</b><br /><br />
+                       
+                    }
+                }
+            }
+        </div>
+
+    </div>
+</div>
+

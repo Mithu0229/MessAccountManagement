@@ -1,0 +1,47 @@
+﻿@using System.Drawing
+@model MassAccountManagementSystem.Models.RegisterUser
+           
+@Html.AntiForgeryToken()
+<div>
+    <table>
+        
+        <tr>
+            <td>@Html.TextBoxFor(a => a.Name, new {placeholder = "Enter Your Name", @class = "form-control"})</td>
+            <td>@Html.ValidationMessageFor(a => a.Name, "", new {@style = "color: red"})</td>
+        </tr>
+
+        <tr>
+            <td>@Html.TextBoxFor(a => a.UserName, new {placeholder = "Enter Your UserName", @class = "form-control"})</td>
+            <td>@Html.ValidationMessageFor(a => a.UserName, "", new {@style = "color: red"})</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="file" name="ImageFile" required />
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.TextAreaFor(a => a.Address, new {placeholder = "Enter Your Address", @class = "form-control"})</td>
+            <td>@Html.ValidationMessageFor(a => a.Address, "", new {@style = "color: red"})</td>
+        </tr>
+
+        <tr>
+            <td>@Html.TextBoxFor(a => a.Email, new {placeholder = "Enter Your Email", @class = "form-control"})</td>
+            <td>@Html.ValidationMessageFor(a => a.Email, "", new {@style = "color: red"})</td>
+        </tr>
+
+        <tr>
+            <td>@Html.TextBoxFor(a => a.Phone, new {placeholder = "Enter Your Phone number", @class = "form-control"})</td>
+            <td>@Html.ValidationMessageFor(a => a.Phone, "", new {@style = "color: red"})</td>
+        </tr>
+
+        <tr>
+            <td>@Html.HiddenFor(a => a.Role, new {@class = "form-control"})</td>
+
+        </tr>
+        <tr>
+            <td>@Html.TextBoxFor(a => a.Question, new {placeholder = "Enter Your question", @class = "form-control"})</td>
+            <td>@Html.ValidationMessageFor(a => a.Question, "", new {@style = "color: red"})</td>
+        </tr>
+    </table>
+</div>
+

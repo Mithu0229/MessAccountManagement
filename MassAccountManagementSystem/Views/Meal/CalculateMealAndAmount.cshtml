@@ -1,0 +1,149 @@
+﻿@model IEnumerable<MassAccountManagementSystem.Models.Meal>
+@{
+    ViewBag.Title = "CalculateMealAndAmount";
+    Layout = "~/Views/Shared/_LayoutForAll.cshtml";
+}
+
+
+
+<div class="container"style="color: black; background-image: url('/Images/5519107155_c29cb3604f_b.jpg'); border-radius: 7px; font-weight: bold">
+    <h2 style="color: white">Calculation all meal and amount</h2>
+   
+    @{
+        var user = @Model.Where(a => a.UserId == 1).ToList();
+        var allUser = @Model.ToList(); //
+        var allmeal = allUser.Sum(a => a.Meal1);
+        var allamount = allUser.Sum(a => a.Amount);
+        var parmeal = allamount/allmeal; //
+        var usermeal = user.Sum(a => a.Meal1);
+        var useramount = user.Sum(a => a.Amount);
+        var ownmeal = parmeal*usermeal+275;
+
+        var user1 = @Model.Where(a => a.UserId == 2).ToList();
+        var usermeal1 = user1.Sum(a => a.Meal1);
+        var useramount1 = user1.Sum(a => a.Amount);
+        var userOwnmeal1 = parmeal*usermeal1+275;
+
+        var user2 = @Model.Where(a => a.UserId == 3).ToList();
+        var usermeal2 = user2.Sum(a => a.Meal1);
+        var useramount2 = user2.Sum(a => a.Amount);
+        var userOwnmeal2 = parmeal*usermeal2+275;
+
+
+        var user3 = @Model.Where(a => a.UserId == 4).ToList();
+        var usermeal3 = user3.Sum(a => a.Meal1);
+        var useramount3 = user3.Sum(a => a.Amount);
+        var userOwnmeal3 = parmeal*usermeal3+275;
+    }
+
+    <div class="row" style="margin-left: 100px; margin-top: 30px">
+        <div style="border: 1px solid gray; border-radius: 5px; padding: 10px; width: 400px; height: 300px; background-color: yellowgreen; float: left; margin-right: 10px; margin-bottom: 10px;">
+            @{
+
+                if (ownmeal > useramount)
+                {
+                    var give = ownmeal - useramount;
+                    Session["give"] = give;
+                }
+                else if (ownmeal < useramount)
+                {
+                    var get = useramount - ownmeal;
+                    Session["get"] = get;
+                }
+            <h2>Showkat Akbar Mithu</h2>
+            <div>Total Meal:@user.Sum(a => a.Meal1)</div><br />
+            <div>Total Amount:@user.Sum(a => a.Amount)</div><br />
+            <div>Par-meal:@parmeal</div><br />
+            <div>Give amount:@Session["give"]</div><br />
+            <div>Get amount:@Session["get"]</div><br />
+            <div>Date:@DateTime.Now.ToString("D")</div>
+
+
+            }
+        </div>
+
+        <div style=" border: 1px solid gray; border-radius: 5px; padding: 5px; width: 400px; height: 300px; background-color: yellowgreen; float: left;margin-right: 10px; margin-bottom: 10px;">
+            @{
+
+                if (userOwnmeal1 > useramount1)
+                {
+                    var give1 = userOwnmeal1 - useramount1;
+                    Session["userGive1"] = give1;
+                }
+                else if (userOwnmeal1 < useramount1)
+                {
+                    var get = useramount1 - userOwnmeal1;
+                    Session["userget1"] = get;
+                }
+                <h2>Asad Shaoun</h2>
+                <div>Total Meal:@usermeal1</div><br />
+                <div>Total Amount:@useramount1</div><br />
+                <div>Par-meal:@parmeal</div><br />
+                <div>Give amount:@Session["userGive1"]</div><br />
+                <div>Get amount:@Session["userget1"]</div><br />
+                <div>Date:@DateTime.Now.ToString("D")</div>
+
+
+            }
+        </div>
+
+    </div>
+    
+
+    <div class="row" style="margin-left: 100px;margin-bottom: 50px">
+        <div style=" border: 1px solid gray; border-radius: 5px; padding: 10px; width: 400px; height: 300px; background-color: yellowgreen; float: left; margin-right: 10px; margin-bottom: 10px;">
+            @{
+
+                if (userOwnmeal2 > useramount2)
+                {
+                    var give2 = userOwnmeal2 - useramount2;
+                    Session["userGive2"] = give2;
+                }
+                else if (userOwnmeal2 < useramount2)
+                {
+                    var get2 = useramount2 - userOwnmeal2;
+                    Session["userget2"] = get2;
+                }
+                <h2>Nazrul Islam</h2>
+                <div>Total Meal:@usermeal2</div><br />
+                <div>Total Amount:@useramount2</div><br />
+                <div>Par-meal:@parmeal</div><br />
+                <div>Give amount:@Session["userGive2"]</div><br />
+                <div>Get amount:@Session["userget2"]</div><br />
+                <div>Date:@DateTime.Now.ToString("D")</div>
+
+
+            }
+        </div>
+        <div style=" border: 1px solid gray; border-radius: 5px; padding: 10px; width: 400px; height: 300px; background-color: yellowgreen; float: left; margin-right: 10px; margin-bottom: 10px;">
+            @{
+
+                if (userOwnmeal3 > useramount3)
+                {
+                    var give3 = userOwnmeal3 - useramount3;
+                    Session["userGive3"] = give3;
+                }
+                else if (userOwnmeal3 < useramount3)
+                {
+                    var get3 = useramount3 - userOwnmeal3;
+                    Session["userget3"] = get3;
+                }
+                <h2>Jaber Bin Forid</h2>
+                <div>Total Meal:@usermeal3</div><br />
+                <div>Total Amount:@useramount3</div><br />
+                <div>Par-meal:@parmeal</div><br />
+                <div>Give amount:@Session["userGive3"]</div><br />
+                <div>Get amount:@Session["userget3"]</div><br />
+                <div>Date:@DateTime.Now.ToString("D")</div>
+
+
+            }
+        </div>
+
+    </div>
+
+    </div>
+
+   
+   
+

@@ -1,0 +1,60 @@
+﻿@model MassAccountManagementSystem.Models.User
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutForAll.cshtml";
+}
+<div style="background-image: url('/Images/5519107155_c29cb3604f_b.jpg')">
+    
+
+    @using (Html.BeginForm("Edit", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="container" style="color: green">
+            <h2 style="margin: 50px 20px;">Edit your profile</h2>
+            <table align="center">
+                <tr>
+                    <td>Name</td>
+                    <td>@Html.TextBoxFor(a => a.Name, new {@class = "form-control"})<br/></td>
+                </tr>
+                <tr>
+                    <td>UserName</td>
+                    <td>@Html.TextBoxFor(a => a.UserName, new {@class = "form-control"})<br/></td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td>@Html.TextBoxFor(a => a.Address, new {@class = "form-control"})<br/></td>
+                </tr>
+                <tr>
+                    <td>Add Image</td>
+                    <td><input type="file" name="ImageFile" required/><br/></td>
+                </tr>
+                <tr>
+                    <td>Phone</td>
+                    <td>@Html.TextBoxFor(a => a.Phone, new {@class = "form-control"})<br/></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>@Html.TextBoxFor(a => a.Email, new {@class = "form-control"})<br/></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td>@Html.TextBoxFor(a => a.Password, new {@class = "form-control"})<br/></td>
+                </tr>
+                <tr>
+                    <td>Question</td>
+                    <td>@Html.TextBoxFor(a => a.Question, new {@class = "form-control"})<br/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Save" class="btn btn-success btn-block"/><br/></td>
+                </tr>
+            </table>
+        </div>
+
+    }
+</div>
+
+
+

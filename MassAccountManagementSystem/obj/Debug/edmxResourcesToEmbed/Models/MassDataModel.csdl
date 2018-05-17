@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Question" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Meals" Relationship="Models.FK_Meals_Users" FromRole="User" ToRole="Meal" />
+  </EntityType>
+  <EntityContainer Name="MassAccountDBContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="Meals" EntityType="Models.Meal" />
+    <AssociationSet Name="FK_Meals_Users" Association="Models.FK_Meals_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Meal" EntitySet="Meals" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Meal">
+    <Key>
+      <PropertyRef Name="MealId" />
+    </Key>
+    <Property Name="MealId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Meal1" Type="Int32" />
+    <Property Name="Amount" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="User" Relationship="Models.FK_Meals_Users" FromRole="Meal" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_Meals_Users">
+    <End Type="Models.User" Role="User" Multiplicity="0..1" />
+    <End Type="Models.Meal" Role="Meal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Meal">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

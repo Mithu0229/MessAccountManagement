@@ -1,0 +1,121 @@
+﻿@model MassAccountManagementSystem.Models.Login
+@{
+    ViewBag.Title = "Index";
+    //Layout = "~/Views/Shared/_LayoutCustom.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Index</title>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+</head>
+<body style="width: 100%; background-image: url('/Images/5519107155_c29cb3604f_b.jpg')">
+    <div class="container pull-right">
+        <span class="btn btn-success">
+            @Html.ActionLink("Register", "RegisterAccount", "Account",new{style="color: white; text-decoration: none"})
+        </span>
+    </div>
+<div>
+
+    <div align="center" style="padding: 20px; margin: 150px 400px; width: 400px; background-image: url('/Images/1388458PIC.jpg')">
+        @using (Html.BeginForm("Login","Account",FormMethod.Post))
+        {
+            <div>
+                @Html.TextBoxFor(a => a.UserName, new {placeholder = "Enter your UserName", @class = "form-control"})
+                @Html.ValidationMessageFor(a => a.UserName, "", new {style = "color: white;font-weight: bold"})
+            </div><br/>
+            <div>
+                @Html.PasswordFor(a => a.Password, new {placeholder = "Enter your Password", @class = "form-control"})
+                @Html.ValidationMessageFor(a => a.Password, "", new {style = "color: white;font-weight: bold"})
+            </div><br/>
+            <div>
+                <input type="submit" class="btn btn-success btn-block" value="Login"/>
+
+            </div><br/>
+            <div>
+                @*<span style="color: white"><input type="checkbox" /> Remember me</span>*@
+                <span data-toggle="modal" data-target="#LoginModal">
+                        <a href="" style="color: white">Forget password </a>
+                    </span>
+            </div>
+
+        }
+
+    </div>
+</div>
+<div class="container">
+    @using (Ajax.BeginForm("QuestionForPass", "Account", new AjaxOptions() {HttpMethod = "post", UpdateTargetId = "questionForPassword"}))
+    {
+        <div class="modal fade" id="LoginModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4>Enter your question</h4>
+
+                </div>
+                <div class="modal-body" id="questionForPassword" align="center">
+                    <input type="text" class="form-control" name="question" placeholder="Enter your question"/><br/>
+                    <input type="text" class="form-control" name="UserName" placeholder="Enter your UserName" />
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success"/>
+                    <input type="button" class="btn btn-danger" data-dismiss="modal" value="Close"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+    
+</div>
+
+@*<div class="container">
+            <button class="btn btn-success pull-right" data-toggle="modal" data-target="#Registermodal">Register</button>
+            <div class="container">
+                @using (Ajax.BeginForm("RegisterUser", "Account", new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "registerform" }, new { @enctype = "multipart/form-data" }))
+                {
+                      <div class="modal fade" id="Registermodal" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header"><h4>Enter your information</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body" id="registerform" style="background-image: url('/Images/1388458PIC.jpg')">
+                                @Html.Partial("_Registerpartial")
+                            </div>
+                            <div class="modal-footer">
+
+                                <input type="submit" class="btn btn-success" value="Save"/>
+                                <button type="button" class="close btn btn-success" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
+
+            </div>
+        </div>
+
+
+        <div>
+           @using (Ajax.BeginForm("Index", "Account", new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "1" }, new { enctype = "multipart/form-data" }))
+                {
+            <div id="1">
+                <input type="file" name="ImageFile" required/>
+                <input type="submit" value="save"/>
+            </div>
+            }
+        </div>*@
+</body>
+</html>
+
